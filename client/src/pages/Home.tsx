@@ -59,14 +59,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-
-          <motion.div 
-            animate={{ y: [0, 10, 0] }}
-            transition={{ repeat: Infinity, duration: 2 }}
-            className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/30"
-          >
-            <ChevronDown className="w-10 h-10" />
-          </motion.div>
         </div>
       </Section>
 

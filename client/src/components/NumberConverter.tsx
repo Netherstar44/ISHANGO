@@ -165,16 +165,28 @@ export function NumberConverter() {
         >
           <h4 className="text-lg font-mono font-bold text-white mb-4 flex items-center gap-2">
             <Calculator className="w-4 h-4 text-purple-400" />
-            Métodos de Conversión
+            Métodos y Ejemplos de Conversión
           </h4>
           <div className="space-y-4 text-sm font-mono text-white/60">
-            <div className="p-3 bg-white/5 rounded-lg border border-white/5">
-              <p className="text-purple-400 font-bold mb-1">Cualquier Base a Decimal:</p>
-              <p>Σ (dígito × base<sup>posición</sup>)</p>
+            <div className="p-4 bg-white/5 rounded-xl border border-white/5">
+              <p className="text-purple-400 font-bold mb-2">Cualquier Base a Decimal:</p>
+              <p className="mb-2">Σ (dígito × base<sup>posición</sup>)</p>
+              <div className="text-xs p-2 bg-black/30 rounded border border-white/5 italic">
+                <p className="text-white/40 mb-1">Ejemplo: Binario 101 a Decimal</p>
+                <p>(1 × 2²) + (0 × 2¹) + (1 × 2⁰) = 4 + 0 + 1 = <span className="text-purple-400">5</span></p>
+              </div>
             </div>
-            <div className="p-3 bg-white/5 rounded-lg border border-white/5">
-              <p className="text-emerald-400 font-bold mb-1">Decimal a Cualquier Base:</p>
-              <p>Divisiones sucesivas por la base destino, tomando los residuos en orden inverso.</p>
+            <div className="p-4 bg-white/5 rounded-xl border border-white/5">
+              <p className="text-emerald-400 font-bold mb-2">Decimal a Cualquier Base:</p>
+              <p className="mb-2">Divisiones sucesivas por la base destino.</p>
+              <div className="text-xs p-2 bg-black/30 rounded border border-white/5 italic">
+                <p className="text-white/40 mb-1">Ejemplo: Decimal 13 a Binario</p>
+                <p>13 ÷ 2 = 6 (Residuo <span className="text-emerald-400">1</span>)</p>
+                <p>6 ÷ 2 = 3 (Residuo <span className="text-emerald-400">0</span>)</p>
+                <p>3 ÷ 2 = 1 (Residuo <span className="text-emerald-400">1</span>)</p>
+                <p>1 ÷ 2 = 0 (Residuo <span className="text-emerald-400">1</span>)</p>
+                <p>Resultado (residuos al revés): <span className="text-emerald-400">1101</span></p>
+              </div>
             </div>
           </div>
         </motion.div>
