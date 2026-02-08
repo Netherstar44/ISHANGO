@@ -76,85 +76,109 @@ export function NumberConverter() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full">
       {/* Calculator Card */}
-      <motion.div 
-        className="bg-black/40 backdrop-blur-xl border border-primary/20 p-8 rounded-3xl shadow-2xl relative overflow-hidden"
-        whileHover={{ scale: 1.01 }}
-        transition={{ duration: 0.3 }}
-      >
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50" />
-        
-        <div className="flex items-center gap-3 mb-6">
-          <Calculator className="w-6 h-6 text-primary" />
-          <h3 className="text-2xl font-mono font-bold text-white">Convertidor Universal</h3>
-        </div>
-
-        <div className="space-y-6">
-          {/* From */}
-          <div className="space-y-2">
-            <label className="text-sm font-mono text-primary/80">Desde:</label>
-            <div className="flex gap-2">
-              <select 
-                value={fromSystem}
-                onChange={(e) => setFromSystem(e.target.value as System)}
-                className="bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-primary outline-none flex-1 font-mono transition-all"
-              >
-                <option value="decimal">Decimal (10)</option>
-                <option value="binary">Binario (2)</option>
-                <option value="octal">Octal (8)</option>
-                <option value="hex">Hexadecimal (16)</option>
-              </select>
-              <input
-                type="text"
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                placeholder="Ingresa valor..."
-                className="bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-primary outline-none flex-[2] font-mono placeholder:text-white/20 transition-all"
-              />
-            </div>
+      <div className="space-y-6">
+        <motion.div 
+          className="bg-black/40 backdrop-blur-xl border border-primary/20 p-8 rounded-3xl shadow-2xl relative overflow-hidden"
+          whileHover={{ scale: 1.01 }}
+          transition={{ duration: 0.3 }}
+        >
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50" />
+          
+          <div className="flex items-center gap-3 mb-6">
+            <Calculator className="w-6 h-6 text-primary" />
+            <h3 className="text-2xl font-mono font-bold text-white">Convertidor Universal</h3>
           </div>
 
-          <div className="flex justify-center">
-            <div className="bg-primary/10 p-2 rounded-full border border-primary/20">
-              <ArrowRightLeft className="w-5 h-5 text-primary rotate-90 md:rotate-0" />
-            </div>
-          </div>
-
-          {/* To */}
-          <div className="space-y-2">
-            <label className="text-sm font-mono text-primary/80">Hacia:</label>
-            <div className="flex gap-2">
-              <select 
-                value={toSystem}
-                onChange={(e) => setToSystem(e.target.value as System)}
-                className="bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-primary outline-none flex-1 font-mono transition-all"
-              >
-                <option value="decimal">Decimal (10)</option>
-                <option value="binary">Binario (2)</option>
-                <option value="octal">Octal (8)</option>
-                <option value="hex">Hexadecimal (16)</option>
-              </select>
-              <div className="flex-[2] bg-primary/10 border border-primary/20 rounded-lg px-4 py-3 text-primary font-mono font-bold flex items-center min-h-[50px] overflow-x-auto">
-                {result || <span className="text-primary/30 font-normal italic">Resultado...</span>}
+          <div className="space-y-6">
+            {/* From */}
+            <div className="space-y-2">
+              <label className="text-sm font-mono text-primary/80">Desde:</label>
+              <div className="flex gap-2">
+                <select 
+                  value={fromSystem}
+                  onChange={(e) => setFromSystem(e.target.value as System)}
+                  className="bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-primary outline-none flex-1 font-mono transition-all"
+                >
+                  <option value="decimal">Decimal (10)</option>
+                  <option value="binary">Binario (2)</option>
+                  <option value="octal">Octal (8)</option>
+                  <option value="hex">Hexadecimal (16)</option>
+                </select>
+                <input
+                  type="text"
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  placeholder="Ingresa valor..."
+                  className="bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-primary outline-none flex-[2] font-mono placeholder:text-white/20 transition-all"
+                />
               </div>
             </div>
-          </div>
 
-          <button
-            onClick={handleConvert}
-            disabled={createConversion.isPending || !inputValue}
-            className="w-full mt-4 py-4 rounded-xl font-bold font-mono tracking-wider uppercase
-              bg-gradient-to-r from-primary to-purple-600 text-white shadow-lg shadow-primary/25
-              hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-1 active:translate-y-0
-              disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none
-              transition-all duration-200 ease-out group"
-          >
-            <span className="flex items-center justify-center gap-2">
-              {createConversion.isPending ? "Procesando..." : "Convertir Ahora"}
-              {!createConversion.isPending && <Sparkles className="w-4 h-4 group-hover:spin-slow" />}
-            </span>
-          </button>
-        </div>
-      </motion.div>
+            <div className="flex justify-center">
+              <div className="bg-primary/10 p-2 rounded-full border border-primary/20">
+                <ArrowRightLeft className="w-5 h-5 text-primary rotate-90 md:rotate-0" />
+              </div>
+            </div>
+
+            {/* To */}
+            <div className="space-y-2">
+              <label className="text-sm font-mono text-primary/80">Hacia:</label>
+              <div className="flex gap-2">
+                <select 
+                  value={toSystem}
+                  onChange={(e) => setToSystem(e.target.value as System)}
+                  className="bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-primary outline-none flex-1 font-mono transition-all"
+                >
+                  <option value="decimal">Decimal (10)</option>
+                  <option value="binary">Binario (2)</option>
+                  <option value="octal">Octal (8)</option>
+                  <option value="hex">Hexadecimal (16)</option>
+                </select>
+                <div className="flex-[2] bg-primary/10 border border-primary/20 rounded-lg px-4 py-3 text-primary font-mono font-bold flex items-center min-h-[50px] overflow-x-auto">
+                  {result || <span className="text-primary/30 font-normal italic">Resultado...</span>}
+                </div>
+              </div>
+            </div>
+
+            <button
+              onClick={handleConvert}
+              disabled={createConversion.isPending || !inputValue}
+              className="w-full mt-4 py-4 rounded-xl font-bold font-mono tracking-wider uppercase
+                bg-gradient-to-r from-primary to-purple-600 text-white shadow-lg shadow-primary/25
+                hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-1 active:translate-y-0
+                disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none
+                transition-all duration-200 ease-out group"
+            >
+              <span className="flex items-center justify-center gap-2">
+                {createConversion.isPending ? "Procesando..." : "Convertir Ahora"}
+                {!createConversion.isPending && <Sparkles className="w-4 h-4 group-hover:spin-slow" />}
+              </span>
+            </button>
+          </div>
+        </motion.div>
+
+        {/* Formulas Card */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="bg-black/40 backdrop-blur-md border border-white/5 p-6 rounded-3xl"
+        >
+          <h4 className="text-lg font-mono font-bold text-white mb-4 flex items-center gap-2">
+            <Calculator className="w-4 h-4 text-purple-400" />
+            Métodos de Conversión
+          </h4>
+          <div className="space-y-4 text-sm font-mono text-white/60">
+            <div className="p-3 bg-white/5 rounded-lg border border-white/5">
+              <p className="text-purple-400 font-bold mb-1">Cualquier Base a Decimal:</p>
+              <p>Σ (dígito × base<sup>posición</sup>)</p>
+            </div>
+            <div className="p-3 bg-white/5 rounded-lg border border-white/5">
+              <p className="text-emerald-400 font-bold mb-1">Decimal a Cualquier Base:</p>
+              <p>Divisiones sucesivas por la base destino, tomando los residuos en orden inverso.</p>
+            </div>
+          </div>
+        </motion.div>
+      </div>
 
       {/* History Card */}
       <motion.div 
