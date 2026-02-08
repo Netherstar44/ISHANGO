@@ -68,7 +68,7 @@ export default function Home() {
         overlayColor="rgba(30, 25, 20, 0.85)"
         // Note: Using descriptive comment for unsplash image as requested
         /* Unsplash: Prehistoric cave painting texture */
-        bgImage="https://images.unsplash.com/photo-1543835079-c8524e4c2919?q=80&w=2000&auto=format&fit=crop"
+        bgImage="Ishango.JPG"
       >
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
@@ -89,13 +89,22 @@ export default function Home() {
             </div>
           </div>
           <div className="relative group">
-            <div className="absolute inset-0 bg-[#d4a373] rounded-lg rotate-3 opacity-20 group-hover:rotate-6 transition-transform duration-500" />
+            <div className="absolute inset-0 bg-[#d4a373] rounded-lg rotate-3 opacity-20 group-hover:rotate-6 transition-transform duration-500 z-0" />
             {/* Unsplash: Close up of stone texture or bone artifact */}
-            <img 
-              src="https://images.unsplash.com/photo-1605634459461-a5367d58ae31?q=80&w=1000&auto=format&fit=crop"
-              alt="Hueso de Ishango y piedras"
-              className="rounded-lg shadow-2xl relative z-10 sepia-[.3] contrast-125 hover:sepia-0 transition-all duration-500"
-            />
+            <a
+              href="https://es.wikipedia.org/wiki/Hueso_de_Ishango"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative z-20 block"
+            >
+              <img 
+                src="/Ishango.JPG"
+                alt="Hueso de Ishango y piedras"
+                loading="lazy"
+                decoding="async"
+                className="rounded-lg shadow-2xl relative z-20 sepia-[.3] contrast-125 hover:sepia-0 transition-all duration-500"
+              />
+            </a>
           </div>
         </div>
       </Section>
@@ -285,3 +294,5 @@ export default function Home() {
     </div>
   );
 }
+
+
